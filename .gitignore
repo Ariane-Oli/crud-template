@@ -1,0 +1,33 @@
+bash
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+venv/
+
+# Sam build
+.aws-sam/
+
+# Dynamodb_local/
+*.jar
+dynamodb_local/
+
+# Docker
+*.log
+
+# Node 
+node_modules/
+
+# Editor configs
+.vscode/
+.idea/
+
+# Windowns
+.DS_Store
+Thumbs.db
+
+
