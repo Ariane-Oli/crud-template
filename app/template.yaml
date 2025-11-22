@@ -2,6 +2,27 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31 
 
 Resources:
+  BackendFunction:
+    Type: AWS::Serverless::Function
+    Properties: 
+      Handler: lambda_function.handler
+      Runtime: python3.11
+      CodeUri: app/backend/src/
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref MyDynamoDBTable
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /data
+            Method: GET
+      Environment:
+        Variables: 
+          TABLE_NAME: !Ref MyDynamoDBTable
+       
+      
+            
   MyDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
