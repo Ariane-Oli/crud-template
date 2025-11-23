@@ -11,17 +11,23 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref MyDynamoDBTable
+      Environment:
+        Variables: 
+          TABLE_NAME: !Ref MyDynamoDBTable
+
       Events:
         ApiEvent:
           Type: Api
           Properties:
             Path: /data
             Method: GET
-      Environment:
-        Variables: 
-          TABLE_NAME: !Ref MyDynamoDBTable
-       
-      
+
+        ListTemplates:
+            Type: Api
+            Properties:
+              Path: /templates
+              Method: GET
+
             
   MyDynamoDBTable:
     Type: AWS::DynamoDB::Table
