@@ -23,12 +23,17 @@ Resources:
             Method: GET
 
         ListTemplates:
-            Type: Api
-            Properties:
-              Path: /templates
-              Method: GET
+          Type: Api
+          Properties:
+            Path: /templates
+            Method: GET
 
-            
+        UpdateTemplates:
+          Type: Api
+          Properties:
+            Path: /templates/{template_id}
+            Method: PUT
+
   MyDynamoDBTable:
     Type: AWS::DynamoDB::Table
     Properties:
