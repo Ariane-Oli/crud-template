@@ -12,8 +12,8 @@ def delete_template(event, context):
     try:
         response = dynamodb_client.delete_item(
             TableName=table_name,
-            Key={iuu_identifier: {"S": template_id}}
-            ReturnValues = "ALL_OLD"
+            Key={iuu_identifier: {"S": template_id}},
+            ReturnValues="ALL_OLD"
         )
 
         if "Attributes" not in response:
@@ -21,7 +21,7 @@ def delete_template(event, context):
                 "statusCode": 404,
                 "body": json.dumps({"message": "Template not found"})
             }
-        
+
         return {
             "statusCode": 200,
             "body": json.dumps({"message": "Template deleted successfully"})
@@ -30,4 +30,4 @@ def delete_template(event, context):
         return {
             "statusCode": 500,
             "body": json.dumps({"message": "Error deleting template", "error": str(e)})
-        },
+        }
